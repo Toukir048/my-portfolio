@@ -1,0 +1,15 @@
+{
+  "name": "Toukir Sarder",
+  "designation": "Frontend Developer | React Developer | Competitive Programmer",
+  "intro": "I build clean, responsive, and user-friendly web applications using React, Tailwind CSS, and modern frontend tools.",
+  "aboutTitle": "A developer who enjoys building useful and beautiful web experiences",
+  "aboutDescription": "Here is a professional introduction section you can customize with your own story.",
+  "journey": "My programming journey started with curiosity about how websites and applications work behind the screen. Over time, I became more interested in frontend development because it combines logic, creativity, and real user experience. I enjoy transforming ideas into responsive interfaces using React, Tailwind CSS, DaisyUI, and JavaScript.",
+  "interests": "I enjoy working on clean layouts, reusable components, smooth animations, and practical web applications that solve real problems. I like improving small details such as spacing, responsiveness, button interactions, and page structure because these details make a website feel professional.",
+  "outsideProgramming": "Outside programming, I like learning new technologies, practicing problem solving, exploring creative design ideas, and improving myself step by step. I believe consistency, patience, and curiosity are the biggest strengths of a developer.",
+  "photo": "/profile.jpg",
+  "resume": "/resume.pdf",
+  "email": "anjumtanvir117@gmail.com",
+  "phone": "+8801794203048",
+  "location": "Bangladesh"
+}

@@ -1,0 +1,21 @@
+{
+  "Frontend": [
+    { "name": "HTML", "value": 90 },
+    { "name": "CSS", "value": 85 },
+    { "name": "JavaScript", "value": 80 },
+    { "name": "React JS", "value": 82 },
+    { "name": "Tailwind CSS", "value": 88 },
+    { "name": "DaisyUI", "value": 84 }
+  ],
+  "Tools": [
+    { "name": "Git & GitHub", "value": 82 },
+    { "name": "VS Code", "value": 90 },
+    { "name": "Netlify", "value": 78 },
+    { "name": "Chrome DevTools", "value": 75 }
+  ],
+  "Programming": [
+    { "name": "C++", "value": 78 },
+    { "name": "Problem Solving", "value": 74 },
+    { "name": "Data Structures", "value": 70 }
+  ]
+}
