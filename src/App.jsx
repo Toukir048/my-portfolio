@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { BrowserRouter, Routes, Route, Link, useNavigate, useParams } from "react-router-dom";
 import {
   FaArrowLeft,
+  FaBars,
   FaCode,
   FaCodeBranch,
   FaDownload,
@@ -237,7 +238,7 @@ function Navbar({ profile, links, theme, onThemeChange }) {
 
   return (
     <div className="nav-shell sticky top-0 z-50 px-4 py-3 lg:px-12">
-      <div className="glass navbar mx-auto max-w-7xl rounded-2xl border px-4 shadow-xl">
+      <div className="glass liquid-glass navbar mx-auto max-w-7xl rounded-2xl border px-4 shadow-xl">
       <div className="navbar-start">
         <button onClick={() => handleNav("home")} className="brand-mark text-xl font-black tracking-tight text-primary">
           {profile.name.split(" ")[0]}<span className="text-accent">.</span>
@@ -269,12 +270,12 @@ function Navbar({ profile, links, theme, onThemeChange }) {
           <FaGithub />
         </a>
         <button className="btn btn-circle btn-sm border-soft bg-soft text-primary lg:hidden" onClick={() => setOpen(!open)} aria-label="Open navigation">
-          <span className="text-lg">☰</span>
+          <FaBars />
         </button>
       </div>
 
       {open && (
-        <div className="absolute left-4 right-4 top-[4.7rem] rounded-3xl border border-soft bg-panel p-4 shadow-2xl lg:hidden">
+        <div className="liquid-glass absolute left-4 right-4 top-[4.7rem] rounded-3xl border border-soft p-4 shadow-2xl lg:hidden">
           <div className="grid gap-2">
             {navItems.map((item) => (
               <button key={item.href} onClick={() => handleNav(item.href)} className="rounded-2xl px-4 py-3 text-left font-semibold text-secondary hover:bg-accent-soft hover:text-accent">
@@ -301,7 +302,7 @@ function SectionTitle({ eyebrow, title, description }) {
 
 function Hero({ profile, links }) {
   return (
-    <section id="home" className="reveal-section hero-section relative overflow-hidden px-4 pb-24 pt-16 md:pb-28 md:pt-24 lg:px-12">
+    <section id="home" className="reveal-section is-visible hero-section relative overflow-hidden px-4 pb-24 pt-16 md:pb-28 md:pt-24 lg:px-12">
       <div className="hero-glow-primary absolute left-[-80px] top-20 h-72 w-72 rounded-full blur-3xl" />
       <div className="hero-glow-secondary absolute bottom-10 right-[-80px] h-80 w-80 rounded-full blur-3xl" />
 
@@ -342,7 +343,7 @@ function Hero({ profile, links }) {
 
         <div className="hero-visual relative mx-auto w-full max-w-md animate-float">
           <div className="hero-photo-glow absolute inset-0 rounded-[3rem] blur-2xl opacity-30" />
-          <div className="profile-frame relative rounded-[3rem] border border-soft bg-soft p-4 shadow-2xl">
+          <div className="profile-frame liquid-glass relative rounded-[3rem] border border-soft p-4 shadow-2xl">
             <img
               src={profile.photo}
               alt={profile.name}
@@ -352,7 +353,7 @@ function Hero({ profile, links }) {
               className="h-[420px] w-full rounded-[2.4rem] object-cover"
             />
           </div>
-          <div className="floating-note absolute -bottom-6 left-6 rounded-3xl border border-soft bg-panel p-5 shadow-2xl">
+          <div className="floating-note liquid-glass absolute -bottom-6 left-6 rounded-3xl border border-soft p-5 shadow-2xl">
             <p className="text-sm text-muted">Focused on</p>
             <p className="font-bold text-primary">Clean UI + Responsive UX</p>
           </div>
