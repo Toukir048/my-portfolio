@@ -1,14 +1,20 @@
 [
   {
     "degree": "BSc in Computer Science and Engineering",
-    "institute": "Your University Name",
-    "year": "Completed / Running",
+    "institute": "University of Global Village, Barishal",
+    "year": "Running",
     "details": "Focused on programming fundamentals, web development, software engineering, databases, algorithms, and practical project development."
   },
   {
     "degree": "Higher Secondary Certificate (HSC)",
-    "institute": "Your College Name",
-    "year": "Your Passing Year",
+    "institute": "Govt. Tofazzol Hossien Manik Mia Degree College",
+    "year": "2022",
+    "details": "Science background with a strong interest in mathematics, technology, and logical problem solving."
+  },
+    {
+    "degree": "Secondary School Certificate (SSC)",
+    "institute": "Kathalia Govt. Pilot Model High School",
+    "year": "2020",
     "details": "Science background with a strong interest in mathematics, technology, and logical problem solving."
   }
 ]

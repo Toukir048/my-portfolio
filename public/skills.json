@@ -8,13 +8,13 @@
     { "name": "DaisyUI", "value": 84 }
   ],
   "Tools": [
-    { "name": "Git & GitHub", "value": 82 },
-    { "name": "VS Code", "value": 90 },
-    { "name": "Netlify", "value": 78 },
-    { "name": "Chrome DevTools", "value": 75 }
+    { "name": "Git & GitHub", "value": 80 },
+    { "name": "VS Code", "value": 99 },
+    { "name": "Netlify", "value": 99 }
   ],
   "Programming": [
     { "name": "C++", "value": 78 },
+    { "name": "Python", "value": 60 },
     { "name": "Problem Solving", "value": 74 },
     { "name": "Data Structures", "value": 70 }
   ]

@@ -6,7 +6,7 @@
     "stack": ["React", "Tailwind CSS", "DaisyUI", "React Router", "LocalStorage", "Recharts"],
     "short": "A friend-tracking web app with quick check-ins, timeline history, statistics, and responsive UI.",
     "description": "KeenKeeper helps users track communication with friends through call, text, and video check-ins. It includes dynamic friend details, localStorage-based timeline history, statistics visualization, and smooth navigation.",
-    "live": "#",
+    "live": "https://github.com/Toukir048/keenkepper-web-project",
     "github": "https://github.com/Toukir048",
     "challenges": "The main challenge was keeping timeline data persistent while maintaining clean route-based navigation and responsive layouts for mobile devices.",
     "improvements": "Future improvements include real authentication, cloud database support, reminder notifications, and better analytics for relationship tracking."
@@ -18,7 +18,7 @@
     "stack": ["React", "Tailwind CSS", "DaisyUI", "React Router", "React Icons"],
     "short": "A responsive class routine app with current class display, filters, and clean student-friendly interface.",
     "description": "This project presents class schedules in a simple and responsive way. Users can filter routines by day or teacher name and quickly understand upcoming or current classes from a polished UI.",
-    "live": "#",
+    "live": "https://github.com/Toukir048/class-routine-webapp",
     "github": "https://github.com/Toukir048",
     "challenges": "The challenging part was designing a mobile-first routine layout that stays readable while showing enough schedule information.",
     "improvements": "Future plans include admin panel support, editable routines, notification reminders, and automatic current-class detection."
@@ -27,10 +27,10 @@
     "id": "weather-app",
     "name": "Weather App",
     "image": "/projects/project-3.png",
-    "stack": ["React", "API", "Tailwind CSS", "DaisyUI", "JavaScript"],
+    "stack": ["Python", "API", "Django", "DaisyUI"],
     "short": "A weather search application that shows city-based weather information with a clean animated interface.",
     "description": "The Weather App allows users to search for a city and view important weather information through an attractive responsive design. It focuses on API handling, user input, conditional rendering, and error management.",
-    "live": "#",
+    "live": "https://github.com/Toukir048/weather-app",
     "github": "https://github.com/Toukir048",
     "challenges": "The key challenge was handling API errors, empty searches, loading states, and showing data in a user-friendly format.",
     "improvements": "Future improvements include location-based weather, hourly forecast, dark/light mode, and better weather animations."
