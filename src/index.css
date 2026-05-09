@@ -43,6 +43,10 @@ html {
   --shadow: 0 26px 90px rgba(0, 0, 0, 0.38);
   --card-highlight: rgba(255, 255, 255, 0.18);
   --glass-edge: rgba(255, 255, 255, 0.42);
+  --project-image-fade: linear-gradient(to top, color-mix(in srgb, var(--page) 95%, transparent), transparent);
+  --project-featured-image-fade:
+    linear-gradient(to top, color-mix(in srgb, var(--page) 92%, transparent), transparent 70%),
+    linear-gradient(90deg, color-mix(in srgb, var(--page) 74%, transparent), transparent 46%);
 }
 
 :root[data-theme-mode="light"] {
@@ -69,6 +73,10 @@ html {
   --shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
   --card-highlight: rgba(255, 255, 255, 0.92);
   --glass-edge: rgba(255, 255, 255, 0.88);
+  --project-image-fade: linear-gradient(to top, rgba(248, 251, 255, 0.18), transparent 58%);
+  --project-featured-image-fade:
+    linear-gradient(to top, rgba(248, 251, 255, 0.2), transparent 62%),
+    linear-gradient(90deg, rgba(248, 251, 255, 0.1), transparent 42%);
 }
 
 body {
@@ -510,9 +518,7 @@ body {
 }
 
 .project-card-featured .image-fade {
-  background:
-    linear-gradient(to top, color-mix(in srgb, var(--page) 92%, transparent), transparent 70%),
-    linear-gradient(90deg, color-mix(in srgb, var(--page) 74%, transparent), transparent 46%);
+  background: var(--project-featured-image-fade);
 }
 
 .projects-grid .project-card-featured h3 {
@@ -634,7 +640,7 @@ body {
 }
 
 .image-fade {
-  background: linear-gradient(to top, color-mix(in srgb, var(--page) 95%, transparent), transparent);
+  background: var(--project-image-fade);
 }
 
 .progress-info::-webkit-progress-value {
