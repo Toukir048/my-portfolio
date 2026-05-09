@@ -2,7 +2,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { BrowserRouter, Routes, Route, Link, useNavigate, useParams } from "react-router-dom";
 import {
   FaArrowLeft,
+  FaArrowRight,
   FaBars,
+  FaCheckCircle,
   FaCode,
   FaCodeBranch,
   FaDownload,
@@ -25,6 +27,7 @@ const navItems = [
   { label: "About", href: "about" },
   { label: "Skills", href: "skills" },
   { label: "Education", href: "education" },
+  { label: "Experience", href: "experience" },
   { label: "Projects", href: "projects" },
   { label: "Contact", href: "contact" },
 ];
@@ -226,6 +229,25 @@ function PageShell({ children, profile, links, theme, onThemeChange }) {
 function Navbar({ profile, links, theme, onThemeChange }) {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    const handlePointerDown = (event) => {
+      if (!navRef.current?.contains(event.target)) setOpen(false);
+    };
+
+    const handleResize = () => {
+      if (window.matchMedia("(min-width: 1024px)").matches) setOpen(false);
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleNav = (section) => {
     setOpen(false);
@@ -237,10 +259,10 @@ function Navbar({ profile, links, theme, onThemeChange }) {
   };
 
   return (
-    <div className="nav-shell sticky top-0 z-50 px-4 py-3 lg:px-12">
-      <div className="glass liquid-glass navbar mx-auto max-w-7xl rounded-2xl border px-4 shadow-xl">
-      <div className="navbar-start">
-        <button onClick={() => handleNav("home")} className="brand-mark text-xl font-black tracking-tight text-primary">
+    <div ref={navRef} className="nav-shell sticky top-0 z-50 px-3 py-3 sm:px-4 lg:px-12">
+      <div className="glass liquid-glass navbar nav-bar mx-auto max-w-7xl rounded-2xl border px-3 shadow-xl sm:px-4">
+      <div className="navbar-start min-w-0">
+        <button onClick={() => handleNav("home")} className="brand-mark truncate text-lg font-black tracking-tight text-primary sm:text-xl">
           {profile.name.split(" ")[0]}<span className="text-accent">.</span>
         </button>
       </div>
@@ -259,24 +281,31 @@ function Navbar({ profile, links, theme, onThemeChange }) {
 
       <div className="navbar-end gap-2">
         <button
-          className="btn btn-circle btn-sm border-soft bg-soft text-primary hover:border-accent hover:bg-accent-soft"
+          className="btn btn-circle btn-sm shrink-0 border-soft bg-soft text-primary hover:border-accent hover:bg-accent-soft"
           onClick={() => onThemeChange(theme === "dark" ? "light" : "dark")}
           aria-label="Change color theme"
           title="Change color theme"
         >
           {theme === "dark" ? <FaSun /> : <FaMoon />}
         </button>
-        <a href={links.github} target="_blank" rel="noreferrer" className="btn btn-circle btn-sm border-soft bg-soft text-primary hover:border-accent hover:bg-accent-soft">
+        <a href={links.github} target="_blank" rel="noreferrer" className="btn btn-circle btn-sm shrink-0 border-soft bg-soft text-primary hover:border-accent hover:bg-accent-soft" aria-label="Open GitHub profile" title="GitHub">
           <FaGithub />
         </a>
-        <button className="btn btn-circle btn-sm border-soft bg-soft text-primary lg:hidden" onClick={() => setOpen(!open)} aria-label="Open navigation">
+        <button
+          className="btn btn-circle btn-sm shrink-0 border-soft bg-soft text-primary lg:hidden"
+          onClick={() => setOpen(!open)}
+          aria-label="Open navigation"
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
+        >
           <FaBars />
         </button>
       </div>
+      </div>
 
       {open && (
-        <div className="liquid-glass absolute left-4 right-4 top-[4.7rem] rounded-3xl border border-soft p-4 shadow-2xl lg:hidden">
-          <div className="grid gap-2">
+        <div id="mobile-navigation" className="mobile-nav-panel liquid-glass mx-auto mt-3 max-w-7xl rounded-3xl border border-soft p-3 shadow-2xl lg:hidden">
+          <div className="grid gap-1">
             {navItems.map((item) => (
               <button key={item.href} onClick={() => handleNav(item.href)} className="rounded-2xl px-4 py-3 text-left font-semibold text-secondary hover:bg-accent-soft hover:text-accent">
                 {item.label}
@@ -285,7 +314,6 @@ function Navbar({ profile, links, theme, onThemeChange }) {
           </div>
         </div>
       )}
-      </div>
     </div>
   );
 }
@@ -307,15 +335,16 @@ function Hero({ profile, links }) {
       <div className="hero-glow-secondary absolute bottom-10 right-[-80px] h-80 w-80 rounded-full blur-3xl" />
 
       <div className="container mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.08fr_.92fr]">
-        <div className="animate-fade-up">
+        <div className="premium-hero-copy animate-fade-up">
           <div className="status-pill mb-6 inline-flex items-center gap-2 rounded-full border border-accent bg-accent-soft px-4 py-2 text-sm font-bold text-accent">
             <span className="status-dot" />
             Available for Web Development Projects
           </div>
+          <p className="hero-kicker mb-4 text-sm font-black uppercase tracking-[0.28em] text-muted">Frontend Developer / React Specialist</p>
           <h1 className="hero-heading text-4xl font-black leading-tight text-primary md:text-6xl lg:text-7xl">
-            Hi, I am <span className="gradient-text">{profile.name}</span>
+            Building sleek digital products with <span className="gradient-text">React</span> and sharp UI details.
           </h1>
-          <h2 className="mt-5 text-xl font-bold text-accent md:text-2xl">{profile.designation}</h2>
+          <h2 className="mt-5 text-xl font-bold text-accent md:text-2xl">Hi, I am {profile.name}</h2>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-secondary">{profile.intro}</p>
 
           <div className="mt-8 flex flex-wrap gap-4">
@@ -323,7 +352,7 @@ function Hero({ profile, links }) {
               <FaDownload /> Download Resume
             </a>
             <button onClick={() => scrollToSection("projects")} className="btn border-soft bg-soft text-primary hover:border-accent hover:bg-accent-soft">
-              <FaRocket /> View Projects
+              View Projects <FaArrowRight />
             </button>
           </div>
 
@@ -338,6 +367,12 @@ function Hero({ profile, links }) {
             <HeroMetric value="React" label="Primary stack" />
             <HeroMetric value="UI/UX" label="Design focus" />
             <HeroMetric value={profile.location} label="Location" />
+          </div>
+
+          <div className="hero-proof mt-6 flex flex-wrap gap-3 text-sm font-semibold text-secondary">
+            <span><FaCheckCircle /> Responsive layouts</span>
+            <span><FaCheckCircle /> Clean components</span>
+            <span><FaCheckCircle /> Smooth interactions</span>
           </div>
         </div>
 
@@ -411,7 +446,7 @@ function Skills({ skills }) {
         <SectionTitle
           eyebrow="Skills"
           title="Technologies I use to build modern websites"
-          description="A categorized skill section with progress-style graphical bars. You can change the values anytime."
+          description="A focused overview of the frontend tools, development workflow, and programming fundamentals I use in real projects."
         />
 
         <div className="grid gap-6 lg:grid-cols-3">
@@ -462,7 +497,7 @@ function Education({ education }) {
   return (
     <section id="education" className="reveal-section section-band px-4 py-20 lg:px-12">
       <div className="container mx-auto max-w-7xl">
-        <SectionTitle eyebrow="Education" title="Educational Qualification" description="Add your real institute name, passing year, CGPA, and achievements here." />
+        <SectionTitle eyebrow="Education" title="Educational Qualification" description="My academic background and the technical foundations that support my software development journey." />
 
         <div className="timeline-grid grid gap-6 lg:grid-cols-2">
           {education.map((item, index) => (
@@ -484,7 +519,7 @@ function Experience({ experiences }) {
   return (
     <section id="experience" className="reveal-section section-band px-4 py-20 lg:px-12">
       <div className="container mx-auto max-w-7xl">
-        <SectionTitle eyebrow="Experience" title="Experience" description="Keep this section if you have experience. Otherwise, you can rename it to Training / Activities." />
+        <SectionTitle eyebrow="Experience" title="Experience" description="Practical development work from personal and academic projects where I designed, built, and improved responsive web applications." />
 
         <div className="mx-auto max-w-4xl space-y-6">
           {experiences.map((exp, index) => (
@@ -515,9 +550,9 @@ function Projects({ projects }) {
           description="Each project card includes a detailed page with stack, description, live link, GitHub link, challenges, and future plans."
         />
 
-        <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+        <div className="projects-grid grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} featured={index === 0} />
           ))}
         </div>
       </div>
@@ -525,7 +560,7 @@ function Projects({ projects }) {
   );
 }
 
-function ProjectCard({ project }) {
+function ProjectCard({ project, featured = false }) {
   const navigate = useNavigate();
   const handleDetailsClick = (event) => {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
@@ -534,8 +569,8 @@ function ProjectCard({ project }) {
   };
 
   return (
-    <div className="project-card themed-card scroll-reveal group overflow-hidden transition duration-300 hover:-translate-y-2 hover:border-accent">
-      <div className="relative h-56 overflow-hidden">
+    <div className={`project-card themed-card scroll-reveal group overflow-hidden transition duration-300 hover:-translate-y-2 hover:border-accent ${featured ? "project-card-featured md:col-span-2" : ""}`}>
+      <div className={`relative overflow-hidden ${featured ? "h-72" : "h-56"}`}>
         <img
           src={project.image}
           alt={project.name}
@@ -545,6 +580,9 @@ function ProjectCard({ project }) {
           className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
         />
         <div className="absolute inset-0 image-fade" />
+        <div className="absolute left-4 top-4 rounded-full border border-accent bg-accent-soft px-3 py-1 text-xs font-black uppercase tracking-[0.18em] text-accent">
+          {featured ? "Featured Case Study" : "Project"}
+        </div>
       </div>
       <div className="p-6">
         <h3 className="text-2xl font-black text-primary">{project.name}</h3>
@@ -557,7 +595,7 @@ function ProjectCard({ project }) {
           ))}
         </div>
         <Link to={`/project/${project.id}`} onClick={handleDetailsClick} className="btn mt-6 w-full border-none bg-accent text-on-accent hover:bg-accent-hover">
-          View More / Details
+          View More / Details <FaArrowRight />
         </Link>
       </div>
     </div>
